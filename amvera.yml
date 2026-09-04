@@ -1,12 +1,18 @@
-# Деплой сайта «Мировое Древо» в Amvera (Node.js Browser / SPA).
-# Документация: https://docs.amvera.ru/applications/environments/nodejs-browser.html
+# Деплой сайта «Мировое Древо» в Amvera.
+# Документация: https://docs.amvera.ru/applications/environments/nodejs-server.html
 
 meta:
   environment: node
   toolchain:
-    name: browser
+    name: npm
     version: "20"
 
 build:
-  artifacts:
-    "dist/*": /
+  additionalCommands: npm run build
+
+run:
+  command: npm run start
+  containerPort: 8080
+
+env:
+  NPM_CONFIG_PRODUCTION: "false"
