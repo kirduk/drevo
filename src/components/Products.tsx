@@ -18,7 +18,6 @@ export default function Products() {
     <section id="products" className="section products">
       <div className="container">
         <div className="products__head">
-          <p className="section-label">Продукция</p>
           <h2 className="section-title">Что мы изготавливаем</h2>
           <p className="section-lead">
             Производим изделия из натурального дерева для окон, лестниц и интерьера — от подоконников
