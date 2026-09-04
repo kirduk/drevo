@@ -187,3 +187,13 @@ export function validateOrderText(text: string): ValidationResult {
     order,
   }
 }
+
+export function buildCorrectOrderText(order: ParsedOrder): string {
+  const lines = order.items.map(
+    (item, index) =>
+      `${index + 1}. Цвет: ${item.colorLabel}, ${item.width}×${item.depth} мм — ${formatPrice(item.expectedPrice)}`,
+  )
+  const total = order.items.reduce((sum, item) => sum + item.expectedPrice, 0)
+
+  return ['Заказ: Подоконники', '', ...lines, '', `Итого: ${formatPrice(total)}`].join('\n')
+}

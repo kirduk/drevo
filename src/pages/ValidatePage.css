@@ -106,3 +106,58 @@
   border: 1px solid #efb6b6;
   color: #7d2b2b;
 }
+
+.validate-page__correct {
+  margin-top: 20px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: #faf7f1;
+}
+
+.validate-page__correct-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--color-border);
+  background: #fff;
+}
+
+.validate-page__correct-head span {
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.validate-page__copy {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--color-wood);
+  background: #fff;
+  cursor: pointer;
+}
+
+.validate-page__copy svg {
+  width: 16px;
+  height: 16px;
+}
+
+.validate-page__correct pre {
+  margin: 0;
+  padding: 18px 16px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  color: var(--color-text);
+}
