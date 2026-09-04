@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import './Header.css'
 
+const LOGO_SRC = '/sources/logo/logo_cut_1.jfif'
+
 const navItems = [
   { href: '#about', label: 'О фабрике' },
   { href: '#products', label: 'Продукция' },
@@ -29,16 +31,7 @@ export default function Header() {
     <header className={`header ${scrolled ? 'header--scrolled' : ''}`}>
       <div className="container header__inner">
         <a href="#" className="header__logo">
-          <span className="header__logo-mark" aria-hidden="true">
-            <svg viewBox="0 0 32 32" fill="none">
-              <path
-                d="M16 4C10 10 6 14 6 20a10 10 0 0 0 20 0c0-6-4-10-10-16Z"
-                stroke="currentColor"
-                strokeWidth="1.5"
-              />
-              <path d="M16 12v14M12 18h8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-            </svg>
-          </span>
+          <img src={LOGO_SRC} alt="Мировое Древо" className="header__logo-image" />
           <span className="header__logo-text">
             <strong>Мировое Древо</strong>
             <small>мебельная фабрика</small>

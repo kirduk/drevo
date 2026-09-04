@@ -12,6 +12,20 @@
   gap: 16px;
 }
 
+.footer__brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.footer__logo {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: rgba(255, 255, 255, 0.08);
+}
+
 .footer__brand strong {
   display: block;
   margin-bottom: 4px;
