@@ -1,0 +1,108 @@
+.validate-page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 32px 20px;
+  background:
+    radial-gradient(circle at 20% 10%, rgba(201, 166, 107, 0.16), transparent 30%),
+    var(--color-bg);
+}
+
+.validate-page__card {
+  width: min(760px, 100%);
+  padding: 32px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-soft);
+}
+
+.validate-page__title {
+  margin: 0 0 24px;
+  font-family: var(--font-display);
+  font-size: 2.4rem;
+  font-weight: 600;
+}
+
+.validate-page__field {
+  display: block;
+}
+
+.validate-page__field textarea {
+  width: 100%;
+  padding: 16px 18px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  resize: vertical;
+  min-height: 280px;
+  line-height: 1.6;
+  background: #fff;
+}
+
+.validate-page__field textarea::placeholder {
+  color: rgba(107, 93, 82, 0.72);
+}
+
+.validate-page__field textarea:focus {
+  outline: none;
+  border-color: rgba(201, 166, 107, 0.8);
+  box-shadow: 0 0 0 4px rgba(201, 166, 107, 0.15);
+}
+
+.validate-page__submit {
+  margin-top: 16px;
+  min-height: 48px;
+  padding: 0 24px;
+  border: 0;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(135deg, var(--color-wood), #3d281c);
+  cursor: pointer;
+}
+
+.validate-page__submit:hover {
+  transform: translateY(-1px);
+}
+
+.validate-page__result {
+  margin-top: 24px;
+  padding: 20px 22px;
+  border-radius: var(--radius-md);
+}
+
+.validate-page__result h2 {
+  margin: 0 0 10px;
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+}
+
+.validate-page__result p {
+  margin: 0;
+}
+
+.validate-page__result ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.validate-page__result li {
+  margin-bottom: 8px;
+}
+
+.validate-page__result li:last-child {
+  margin-bottom: 0;
+}
+
+.validate-page__result--ok {
+  background: #edf8ef;
+  border: 1px solid #b9dfc0;
+  color: #245532;
+}
+
+.validate-page__result--error {
+  background: #fff1f1;
+  border: 1px solid #efb6b6;
+  color: #7d2b2b;
+}

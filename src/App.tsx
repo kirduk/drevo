@@ -2,6 +2,7 @@ import { Routes, Route, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
 import HomePage from './pages/HomePage'
 import WindowsillPage from './pages/WindowsillPage'
+import ValidatePage from './pages/ValidatePage'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -20,6 +21,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/products/windowsill" element={<WindowsillPage />} />
+        <Route path="/validate" element={<ValidatePage />} />
       </Routes>
     </>
   )
