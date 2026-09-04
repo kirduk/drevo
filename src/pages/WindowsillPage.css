@@ -1,0 +1,361 @@
+.windowsill-page {
+  padding-top: calc(var(--header-height) + 32px);
+  padding-bottom: 80px;
+}
+
+.windowsill-page__back {
+  display: inline-flex;
+  margin-bottom: 24px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--color-wood);
+}
+
+.windowsill-page__back:hover {
+  color: var(--color-wood-light);
+}
+
+.windowsill-page__hero {
+  max-width: 760px;
+  margin-bottom: 40px;
+}
+
+.windowsill-overview {
+  margin-bottom: 56px;
+}
+
+.windowsill-overview__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.windowsill-overview__item {
+  margin: 0;
+}
+
+.windowsill-overview__item--wide {
+  grid-column: 1 / -1;
+}
+
+.windowsill-overview__button {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  cursor: pointer;
+  background: #f0e8dc;
+}
+
+.windowsill-overview__button img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.windowsill-overview__item:not(.windowsill-overview__item--wide) .windowsill-overview__button {
+  aspect-ratio: 4 / 3;
+}
+
+.windowsill-overview__item--wide .windowsill-overview__button img {
+  max-height: 420px;
+  object-fit: contain;
+  background: #faf6ef;
+}
+
+.windowsill-overview__item figcaption {
+  margin-top: 10px;
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+}
+
+.windowsill-section {
+  margin-bottom: 48px;
+  padding: 32px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-card);
+}
+
+.windowsill-section--accent {
+  background: linear-gradient(145deg, #fff9f0, #f7efe3);
+}
+
+.windowsill-section__title {
+  margin: 0 0 18px;
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.windowsill-section__text p {
+  margin: 0 0 14px;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+}
+
+.windowsill-section__text p:last-child {
+  margin-bottom: 0;
+}
+
+.windowsill-section__lead {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-wood);
+}
+
+.windowsill-colors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.windowsill-colors__btn {
+  min-height: 44px;
+  padding: 0 18px;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  background: #fff;
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+
+.windowsill-colors__btn:hover {
+  border-color: rgba(201, 166, 107, 0.55);
+  color: var(--color-wood);
+}
+
+.windowsill-colors__btn--active {
+  color: #fff;
+  border-color: var(--color-wood);
+  background: linear-gradient(135deg, var(--color-wood), #3d281c);
+}
+
+.windowsill-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.windowsill-gallery__item {
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  cursor: pointer;
+  aspect-ratio: 4 / 3;
+  background: #f0e8dc;
+}
+
+.windowsill-gallery__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.windowsill-gallery__item:hover img {
+  transform: scale(1.04);
+}
+
+.windowsill-calculator__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.windowsill-calculator label {
+  display: grid;
+  gap: 8px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.windowsill-calculator input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: #fff;
+}
+
+.windowsill-calculator input:focus {
+  outline: none;
+  border-color: rgba(201, 166, 107, 0.8);
+  box-shadow: 0 0 0 4px rgba(201, 166, 107, 0.15);
+}
+
+.windowsill-calculator__hint {
+  margin: 0 0 12px;
+  font-size: 0.88rem;
+}
+
+.windowsill-calculator__hint--error {
+  color: #a33;
+}
+
+.windowsill-calculator__price {
+  margin: 0 0 20px;
+  font-size: 1.15rem;
+}
+
+.windowsill-calculator__price strong {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  color: var(--color-wood);
+}
+
+.windowsill-calculator__order {
+  min-height: 52px;
+  padding: 0 28px;
+  border: 0;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(135deg, var(--color-wood), #3d281c);
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.windowsill-calculator__order:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.windowsill-calculator__order:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.windowsill-lightbox,
+.windowsill-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(10, 8, 6, 0.88);
+  backdrop-filter: blur(8px);
+}
+
+.windowsill-lightbox__content,
+.windowsill-modal__dialog {
+  position: relative;
+  width: min(920px, 100%);
+}
+
+.windowsill-lightbox__content img {
+  width: 100%;
+  max-height: 82vh;
+  object-fit: contain;
+  border-radius: var(--radius-md);
+}
+
+.windowsill-lightbox__close,
+.windowsill-modal__close {
+  position: absolute;
+  top: -44px;
+  right: 0;
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 50%;
+  font-size: 1.6rem;
+  line-height: 1;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.12);
+  cursor: pointer;
+}
+
+.windowsill-modal__dialog {
+  padding: 28px;
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+}
+
+.windowsill-modal__title {
+  margin: 0 0 12px;
+  font-family: var(--font-display);
+  font-size: 2rem;
+}
+
+.windowsill-modal__text {
+  margin: 0 0 20px;
+  color: var(--color-text-muted);
+}
+
+.windowsill-modal__tech {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: #faf7f1;
+}
+
+.windowsill-modal__tech-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--color-border);
+  background: #fff;
+}
+
+.windowsill-modal__tech-head span {
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.windowsill-modal__copy {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--color-wood);
+  background: #fff;
+  cursor: pointer;
+}
+
+.windowsill-modal__copy svg {
+  width: 16px;
+  height: 16px;
+}
+
+.windowsill-modal__tech pre {
+  margin: 0;
+  padding: 18px 16px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+@media (max-width: 768px) {
+  .windowsill-overview__grid,
+  .windowsill-gallery,
+  .windowsill-calculator__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .windowsill-section {
+    padding: 24px 20px;
+  }
+}

@@ -1,23 +1,12 @@
-import Header from './components/Header'
-import Hero from './components/Hero'
-import About from './components/About'
-import Products from './components/Products'
-import Gallery from './components/Gallery'
-import Contact from './components/Contact'
-import Footer from './components/Footer'
+import { Routes, Route } from 'react-router-dom'
+import HomePage from './pages/HomePage'
+import WindowsillPage from './pages/WindowsillPage'
 
 export default function App() {
   return (
-    <>
-      <Header />
-      <main>
-        <Hero />
-        <About />
-        <Products />
-        <Gallery />
-        <Contact />
-      </main>
-      <Footer />
-    </>
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/products/windowsill" element={<WindowsillPage />} />
+    </Routes>
   )
 }

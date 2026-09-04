@@ -3,28 +3,24 @@ export interface ProductItem {
   title: string
   description: string
   images: string[]
+  href?: string
 }
 
-const windowsillImages = [
-  '0.jpeg',
-  '1.jpg',
-  '2.jpg',
-  '3.jpg',
-  '4.jpg',
-  '5.jpg',
-  '6.jpg',
-  '7.png',
-  '8.jpg',
-  '9.jpg',
-].map((file) => `/sources/windowsill/unpainted/${file}`)
+const windowsillPreviewImages = [
+  '/sources/windowsill/oak/6.4.png',
+  '/sources/windowsill/oak/7.4.png',
+  '/sources/windowsill/unpainted/4.jpg',
+  '/sources/windowsill/black/6.png',
+]
 
 export const products: ProductItem[] = [
   {
     id: 'windowsill',
     title: 'Подоконники',
     description:
-      'Деревянные подоконники из массива и шпона: неокрашенные, прозрачные и чёрные варианты отделки под ваш интерьер.',
-    images: windowsillImages,
+      'Деревянные подоконники из массива и шпона: неокрашенные и окрашенные варианты отделки под ваш интерьер.',
+    images: windowsillPreviewImages,
+    href: '/products/windowsill',
   },
   {
     id: 'slope',

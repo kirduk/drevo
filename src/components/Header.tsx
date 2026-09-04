@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import './Header.css'
 
 const LOGO_SRC = '/sources/logo/logo_cut_1.jfif'
 
 const navItems = [
-  { href: '#about', label: 'О фабрике' },
-  { href: '#products', label: 'Продукция' },
-  { href: '#gallery', label: 'Галерея' },
-  { href: '#contact', label: 'Контакты' },
+  { href: '/#about', label: 'О фабрике' },
+  { href: '/#products', label: 'Продукция' },
+  { href: '/#gallery', label: 'Галерея' },
+  { href: '/#contact', label: 'Контакты' },
 ]
 
 export default function Header() {
@@ -30,13 +31,13 @@ export default function Header() {
   return (
     <header className={`header ${scrolled ? 'header--scrolled' : ''}`}>
       <div className="container header__inner">
-        <a href="#" className="header__logo">
+        <Link to="/" className="header__logo">
           <img src={LOGO_SRC} alt="Мировое Древо" className="header__logo-image" />
           <span className="header__logo-text">
             <strong>Мировое Древо</strong>
             <small>мебельная фабрика</small>
           </span>
-        </a>
+        </Link>
 
         <nav className={`header__nav ${menuOpen ? 'header__nav--open' : ''}`}>
           <ul>
@@ -48,7 +49,7 @@ export default function Header() {
               </li>
             ))}
           </ul>
-          <a href="#contact" className="header__cta" onClick={() => setMenuOpen(false)}>
+          <a href="/#contact" className="header__cta" onClick={() => setMenuOpen(false)}>
             Заказать проект
           </a>
         </nav>

@@ -24,6 +24,12 @@
   border: 1px solid var(--color-border);
   box-shadow: var(--shadow-card);
   transition: transform 0.25s ease, border-color 0.25s ease;
+  color: inherit;
+}
+
+.products__card--link {
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .products__card:hover {
