@@ -1,3 +1,10 @@
+export interface ProductItem {
+  id: string
+  title: string
+  description: string
+  images: string[]
+}
+
 export interface GalleryImage {
   file: string
   title: string
@@ -6,12 +13,6 @@ export interface GalleryImage {
 
 export interface GalleryManifest {
   images: GalleryImage[]
-}
-
-export interface Product {
-  title: string
-  description: string
-  icon: string
 }
 
 export interface ContactInfo {
