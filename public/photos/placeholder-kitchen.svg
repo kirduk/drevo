@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" fill="none">
+  <rect width="800" height="600" fill="#E8DCC8"/>
+  <rect x="80" y="120" width="640" height="360" rx="8" fill="#C4A574" opacity="0.35"/>
+  <rect x="120" y="180" width="200" height="280" rx="4" fill="#5C3D2E" opacity="0.6"/>
+  <rect x="360" y="200" width="320" height="80" rx="4" fill="#8B6348" opacity="0.5"/>
+  <rect x="360" y="320" width="140" height="140" rx="4" fill="#8B6348" opacity="0.4"/>
+  <text x="400" y="520" text-anchor="middle" font-family="Georgia, serif" font-size="28" fill="#5C3D2E">CE=O</text>
+</svg>

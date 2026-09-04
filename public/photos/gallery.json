@@ -1,0 +1,19 @@
+{
+  "images": [
+    {
+      "file": "placeholder-kitchen.svg",
+      "title": "Кухня «Борneo»",
+      "category": "Кухни"
+    },
+    {
+      "file": "placeholder-wardrobe.svg",
+      "title": "Гардеробная «Nord»",
+      "category": "Шкафы"
+    },
+    {
+      "file": "placeholder-living.svg",
+      "title": "Гостиная «Atlas»",
+      "category": "Гостиные"
+    }
+  ]
+}

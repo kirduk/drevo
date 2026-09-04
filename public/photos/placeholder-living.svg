@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" fill="none">
+  <rect width="800" height="600" fill="#F0E8DA"/>
+  <rect x="60" y="340" width="680" height="180" rx="6" fill="#8B6348" opacity="0.35"/>
+  <rect x="100" y="100" width="500" height="220" rx="4" fill="#5C3D2E" opacity="0.5"/>
+  <rect x="620" y="120" width="100" height="180" rx="4" fill="#C4A574" opacity="0.6"/>
+  <rect x="100" y="360" width="120" height="140" rx="4" fill="#5C3D2E" opacity="0.4"/>
+  <text x="400" y="560" text-anchor="middle" font-family="Georgia, serif" font-size="28" fill="#5C3D2E">>AB8=0O</text>
+</svg>

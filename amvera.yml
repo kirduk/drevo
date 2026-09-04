@@ -1,0 +1,12 @@
+# Деплой сайта «Мировое Древо» в Amvera (Node.js Browser / SPA).
+# Документация: https://docs.amvera.ru/applications/environments/nodejs-browser.html
+
+meta:
+  environment: node
+  toolchain:
+    name: browser
+    version: "20"
+
+build:
+  artifacts:
+    "dist/*": /
