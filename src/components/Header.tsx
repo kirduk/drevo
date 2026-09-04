@@ -35,7 +35,7 @@ export default function Header() {
           <img src={LOGO_SRC} alt="Мировое Древо" className="header__logo-image" />
           <span className="header__logo-text">
             <strong>Мировое Древо</strong>
-            <small>мебельная фабрика</small>
+            <small>Фабрика</small>
           </span>
         </Link>
 

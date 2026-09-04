@@ -12,7 +12,7 @@ export default function Footer() {
           <img src={LOGO_SRC} alt="" className="footer__logo" aria-hidden="true" />
           <div>
             <strong>Мировое Древо</strong>
-            <p>Мебельная фабрика полного цикла</p>
+            <p>Фабрика полного цикла</p>
           </div>
         </div>
         <p className="footer__copy">© {year} Мировое Древо. Все права защищены.</p>
