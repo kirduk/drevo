@@ -5,7 +5,7 @@ import { AVITO_BRAND_URL } from '../data/company'
 import type { ProductPageConfig } from '../data/productPage'
 import type { ProductColorId } from '../data/productColors'
 import { getProductColorLabel } from '../data/productColors'
-import { calculateProductPrice, calculateProductVolumePrice, formatPrice } from '../utils/productPrice'
+import { calculateProductPrice, calculateFauxbeamPrice, calculateProductVolumePrice, formatPrice } from '../utils/productPrice'
 import ImageLightbox from './ImageLightbox'
 import './ProductOrderPage.css'
 
@@ -50,6 +50,7 @@ interface ProductOrderPageProps {
 
 export default function ProductOrderPage({ config }: ProductOrderPageProps) {
   const isVolume = config.dimensionMode === 'volume'
+  const priceFormula = config.priceFormula ?? (isVolume ? 'volume' : 'area')
   const secondDimensionLabel = config.secondDimensionLabel ?? 'Глубина'
   const maxLength = config.maxLength ?? config.maxDepth
   const maxHeight = config.maxHeight ?? config.maxDepth
@@ -83,15 +84,23 @@ export default function ProductOrderPage({ config }: ProductOrderPageProps) {
       : width > 0 && depth > 0 && width <= config.maxWidth && depth <= config.maxDepth
 
     const price = valid
-      ? isVolume
-        ? calculateProductVolumePrice(
+      ? priceFormula === 'fauxbeam'
+        ? calculateFauxbeamPrice(
             width,
             depth,
             height,
             line.colorId === 'unpainted',
             config.priceRates,
           )
-        : calculateProductPrice(width, depth, line.colorId === 'unpainted', config.priceRates)
+        : priceFormula === 'volume'
+          ? calculateProductVolumePrice(
+              width,
+              depth,
+              height,
+              line.colorId === 'unpainted',
+              config.priceRates,
+            )
+          : calculateProductPrice(width, depth, line.colorId === 'unpainted', config.priceRates)
       : 0
 
     return {
@@ -115,7 +124,7 @@ export default function ProductOrderPage({ config }: ProductOrderPageProps) {
           config.orderHeading,
           '',
           ...parsedLines.map((item, index) =>
-            isVolume
+            priceFormula === 'fauxbeam' || priceFormula === 'volume'
               ? `${index + 1}. Цвет: ${item.colorLabel}, ${item.width}×${item.depth}×${item.height} мм — ${formatPrice(item.price)}`
               : `${index + 1}. Цвет: ${item.colorLabel}, ${item.width}×${item.depth} мм — ${formatPrice(item.price)}`,
           ),

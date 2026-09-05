@@ -12,6 +12,8 @@ export interface ProductPriceRates {
 
 export type ProductDimensionMode = 'area' | 'volume'
 
+export type ProductPriceFormula = 'area' | 'volume' | 'fauxbeam'
+
 export interface ProductPageConfig {
   title: string
   lead: string
@@ -22,6 +24,7 @@ export interface ProductPageConfig {
   descriptionOil: string
   productionText: string
   dimensionMode?: ProductDimensionMode
+  priceFormula?: ProductPriceFormula
   maxWidth: number
   maxDepth: number
   maxLength?: number

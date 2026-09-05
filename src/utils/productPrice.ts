@@ -16,6 +16,21 @@ export function calculateProductPrice(
   return Math.round((width * depth * rate) / 1_000_000)
 }
 
+export function calculateFauxbeamPrice(
+  widthMm: number,
+  lengthMm: number,
+  heightMm: number,
+  unpainted: boolean,
+  rates: ProductPriceRates,
+): number {
+  const width = roundUpTo100(widthMm)
+  const length = roundUpTo100(lengthMm)
+  const height = roundUpTo100(heightMm)
+  const rate = unpainted ? rates.unpainted : rates.painted
+  const surface = height * length * 2 + width * length
+  return Math.round((surface * rate) / 1_000_000_000)
+}
+
 export function calculateProductVolumePrice(
   widthMm: number,
   lengthMm: number,

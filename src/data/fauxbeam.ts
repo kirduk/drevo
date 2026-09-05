@@ -34,6 +34,7 @@ export const fauxbeamPageConfig: ProductPageConfig = {
   productionText:
     'Непокрашенная фальшбалка — 1 неделя. Покрашенная — 2 недели, так как масло сохнет между нанесением слоёв.',
   dimensionMode: 'volume',
+  priceFormula: 'fauxbeam',
   maxWidth: 1000,
   maxDepth: 6000,
   maxLength: 6000,
