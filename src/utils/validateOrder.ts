@@ -1,5 +1,8 @@
 import { calculateWindowsillPrice, formatPrice } from './windowsillPrice'
-import { WINDOWSILL_MAX_DEPTH, WINDOWSILL_MAX_WIDTH, windowsillColors } from '../data/windowsill'
+import { windowsillPageConfig } from '../data/windowsill'
+
+const { colors: windowsillColors, maxWidth: WINDOWSILL_MAX_WIDTH, maxDepth: WINDOWSILL_MAX_DEPTH } =
+  windowsillPageConfig
 
 export interface ParsedOrderItem {
   index: number

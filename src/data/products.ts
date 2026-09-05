@@ -13,6 +13,13 @@ const windowsillPreviewImages = [
   '/sources/windowsill/black/6.png',
 ]
 
+const slopePreviewImages = [
+  '/sources/slope/oak/6.4.png',
+  '/sources/slope/unpainted/1.jpg',
+  '/sources/slope/black/6.png',
+  '/sources/slope/all_colours.png',
+]
+
 export const products: ProductItem[] = [
   {
     id: 'windowsill',
@@ -27,7 +34,8 @@ export const products: ProductItem[] = [
     title: 'Откосы',
     description:
       'Деревянные откосы для окон и дверных проёмов — точная подгонка, аккуратный монтаж и единый стиль с подоконником.',
-    images: [],
+    images: slopePreviewImages,
+    href: '/products/slope',
   },
   {
     id: 'countertop',
