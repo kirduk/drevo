@@ -3,6 +3,7 @@ import Hero from '../components/Hero'
 import About from '../components/About'
 import Products from '../components/Products'
 import Gallery from '../components/Gallery'
+import Delivery from '../components/Delivery'
 import Contact from '../components/Contact'
 import Footer from '../components/Footer'
 
@@ -15,6 +16,7 @@ export default function HomePage() {
         <About />
         <Products />
         <Gallery />
+        <Delivery />
         <Contact />
       </main>
       <Footer />
