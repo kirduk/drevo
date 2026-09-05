@@ -5,7 +5,7 @@ import { AVITO_BRAND_URL } from '../data/company'
 import type { ProductPageConfig } from '../data/productPage'
 import type { ProductColorId } from '../data/productColors'
 import { getProductColorLabel } from '../data/productColors'
-import { calculateProductPrice, formatPrice } from '../utils/productPrice'
+import { calculateProductPrice, calculateProductVolumePrice, formatPrice } from '../utils/productPrice'
 import ImageLightbox from './ImageLightbox'
 import './ProductOrderPage.css'
 
@@ -14,6 +14,7 @@ interface OrderLine {
   colorId: ProductColorId
   width: string
   depth: string
+  height: string
 }
 
 interface ParsedLine {
@@ -21,6 +22,7 @@ interface ParsedLine {
   colorLabel: string
   width: number
   depth: number
+  height: number
   price: number
   valid: boolean
 }
@@ -31,8 +33,9 @@ function createLine(config: ProductPageConfig): OrderLine {
   return {
     id: `line-${lineCounter++}`,
     colorId: config.defaultColorId,
-    width: '1200',
-    depth: '400',
+    width: config.defaultWidth ?? '1200',
+    depth: config.defaultDepth ?? config.defaultLength ?? '400',
+    height: config.defaultHeight ?? '200',
   }
 }
 
@@ -46,6 +49,10 @@ interface ProductOrderPageProps {
 }
 
 export default function ProductOrderPage({ config }: ProductOrderPageProps) {
+  const isVolume = config.dimensionMode === 'volume'
+  const secondDimensionLabel = config.secondDimensionLabel ?? 'Глубина'
+  const maxLength = config.maxLength ?? config.maxDepth
+  const maxHeight = config.maxHeight ?? config.maxDepth
   const [galleryColorId, setGalleryColorId] = useState<ProductColorId>(config.defaultColorId)
   const [lines, setLines] = useState<OrderLine[]>(() => [createLine(config)])
   const [orderOpen, setOrderOpen] = useState(false)
@@ -65,11 +72,26 @@ export default function ProductOrderPage({ config }: ProductOrderPageProps) {
   const parseLine = (line: OrderLine): ParsedLine => {
     const width = Number(line.width) || 0
     const depth = Number(line.depth) || 0
-    const valid =
-      width > 0 && depth > 0 && width <= config.maxWidth && depth <= config.maxDepth
+    const height = Number(line.height) || 0
+    const valid = isVolume
+      ? width > 0 &&
+        depth > 0 &&
+        height > 0 &&
+        width <= config.maxWidth &&
+        depth <= maxLength &&
+        height <= maxHeight
+      : width > 0 && depth > 0 && width <= config.maxWidth && depth <= config.maxDepth
 
     const price = valid
-      ? calculateProductPrice(width, depth, line.colorId === 'unpainted', config.priceRates)
+      ? isVolume
+        ? calculateProductVolumePrice(
+            width,
+            depth,
+            height,
+            line.colorId === 'unpainted',
+            config.priceRates,
+          )
+        : calculateProductPrice(width, depth, line.colorId === 'unpainted', config.priceRates)
       : 0
 
     return {
@@ -77,6 +99,7 @@ export default function ProductOrderPage({ config }: ProductOrderPageProps) {
       colorLabel: getProductColorLabel(config.colors, line.colorId),
       width,
       depth,
+      height,
       price,
       valid,
     }
@@ -91,9 +114,10 @@ export default function ProductOrderPage({ config }: ProductOrderPageProps) {
       ? [
           config.orderHeading,
           '',
-          ...parsedLines.map(
-            (item, index) =>
-              `${index + 1}. Цвет: ${item.colorLabel}, ${item.width}×${item.depth} мм — ${formatPrice(item.price)}`,
+          ...parsedLines.map((item, index) =>
+            isVolume
+              ? `${index + 1}. Цвет: ${item.colorLabel}, ${item.width}×${item.depth}×${item.height} мм — ${formatPrice(item.price)}`
+              : `${index + 1}. Цвет: ${item.colorLabel}, ${item.width}×${item.depth} мм — ${formatPrice(item.price)}`,
           ),
           '',
           `Итого: ${formatPrice(totalPrice)}`,
@@ -153,7 +177,9 @@ export default function ProductOrderPage({ config }: ProductOrderPageProps) {
           </header>
 
           <section className="windowsill-overview" aria-label="Общие фото изделия">
-            <div className="windowsill-overview__row">
+            <div
+              className={`windowsill-overview__row ${config.overviewImages.length > 4 ? 'windowsill-overview__row--many' : ''}`}
+            >
               {config.overviewImages.map((image, index) => (
                 <figure key={image.src} className="windowsill-overview__item">
                   <button
@@ -239,7 +265,9 @@ export default function ProductOrderPage({ config }: ProductOrderPageProps) {
                     )}
                   </div>
 
-                  <div className="windowsill-lines__grid">
+                  <div
+                    className={`windowsill-lines__grid ${isVolume ? 'windowsill-lines__grid--volume' : ''}`}
+                  >
                     <label>
                       Цвет
                       <select
@@ -268,15 +296,29 @@ export default function ProductOrderPage({ config }: ProductOrderPageProps) {
                       />
                     </label>
                     <label>
-                      Глубина, мм
+                      {isVolume ? 'Длина, мм' : `${secondDimensionLabel}, мм`}
                       <input
                         type="number"
                         min={1}
-                        max={config.maxDepth}
+                        max={isVolume ? maxLength : config.maxDepth}
                         value={item.line.depth}
                         onChange={(event) => updateLine(item.line.id, { depth: event.target.value })}
                       />
                     </label>
+                    {isVolume && (
+                      <label>
+                        Высота, мм
+                        <input
+                          type="number"
+                          min={1}
+                          max={maxHeight}
+                          value={item.line.height}
+                          onChange={(event) =>
+                            updateLine(item.line.id, { height: event.target.value })
+                          }
+                        />
+                      </label>
+                    )}
                     <div className="windowsill-lines__price">
                       <span>Стоимость</span>
                       <strong>{item.valid ? formatPrice(item.price) : '—'}</strong>
@@ -297,8 +339,9 @@ export default function ProductOrderPage({ config }: ProductOrderPageProps) {
 
               {!allValid && (
                 <p className="windowsill-lines__hint">
-                  Укажите для каждого изделия размеры от 1 до {config.maxWidth} × {config.maxDepth}{' '}
-                  мм.
+                  {isVolume
+                    ? `Укажите для каждого изделия размеры от 1 до ${config.maxWidth} × ${maxLength} × ${maxHeight} мм.`
+                    : `Укажите для каждого изделия размеры от 1 до ${config.maxWidth} × ${config.maxDepth} мм${secondDimensionLabel === 'Длина' ? ' (ширина × длина)' : ''}.`}
                 </p>
               )}
 

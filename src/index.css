@@ -68,6 +68,7 @@ main {
 
 .section {
   padding: 96px 0;
+  scroll-margin-top: calc(var(--header-height) + 16px);
 }
 
 .section-label {

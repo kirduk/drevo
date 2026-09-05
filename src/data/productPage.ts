@@ -10,6 +10,8 @@ export interface ProductPriceRates {
   painted: number
 }
 
+export type ProductDimensionMode = 'area' | 'volume'
+
 export interface ProductPageConfig {
   title: string
   lead: string
@@ -19,8 +21,16 @@ export interface ProductPageConfig {
   descriptionCommon: string
   descriptionOil: string
   productionText: string
+  dimensionMode?: ProductDimensionMode
   maxWidth: number
   maxDepth: number
+  maxLength?: number
+  maxHeight?: number
+  defaultWidth?: string
+  defaultDepth?: string
+  defaultLength?: string
+  defaultHeight?: string
+  secondDimensionLabel?: string
   priceRates: ProductPriceRates
   orderHeading: string
   itemLabel: string

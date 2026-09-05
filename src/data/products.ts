@@ -20,6 +20,20 @@ const slopePreviewImages = [
   '/sources/slope/all_colours.png',
 ]
 
+const fauxbeamPreviewImages = [
+  '/sources/fauxbeam/1.jpg',
+  '/sources/fauxbeam/2.jpg',
+  '/sources/fauxbeam/all_colours.png',
+  '/sources/fauxbeam/scheme.png',
+]
+
+const countertopPreviewImages = [
+  '/sources/countertop/1.jpg',
+  '/sources/countertop/2.jpg',
+  '/sources/countertop/all_colours.png',
+  '/sources/countertop/scheme.jpg',
+]
+
 export const products: ProductItem[] = [
   {
     id: 'windowsill',
@@ -42,14 +56,16 @@ export const products: ProductItem[] = [
     title: 'Столешницы',
     description:
       'Столешницы для кухни, столов и барных зон из массива дерева с защитным покрытием и обработкой кромок.',
-    images: [],
+    images: countertopPreviewImages,
+    href: '/products/countertop',
   },
   {
     id: 'fauxbeam',
     title: 'Фальш-балки',
     description:
       'Декоративные балки из дерева для потолков и стен — создают уют и подчёркивают архитектуру пространства.',
-    images: [],
+    images: fauxbeamPreviewImages,
+    href: '/products/fauxbeam',
   },
   {
     id: 'stairs',

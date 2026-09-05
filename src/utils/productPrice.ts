@@ -16,6 +16,20 @@ export function calculateProductPrice(
   return Math.round((width * depth * rate) / 1_000_000)
 }
 
+export function calculateProductVolumePrice(
+  widthMm: number,
+  lengthMm: number,
+  heightMm: number,
+  unpainted: boolean,
+  rates: ProductPriceRates,
+): number {
+  const width = roundUpTo100(widthMm)
+  const length = roundUpTo100(lengthMm)
+  const height = roundUpTo100(heightMm)
+  const rate = unpainted ? rates.unpainted : rates.painted
+  return Math.round((width * length * height * rate) / 1_000_000_000_000)
+}
+
 export function formatPrice(value: number): string {
   return new Intl.NumberFormat('ru-RU', {
     style: 'currency',

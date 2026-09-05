@@ -44,15 +44,15 @@ export default function Header() {
           <ul>
             {navItems.map((item) => (
               <li key={item.href}>
-                <a href={item.href} onClick={() => setMenuOpen(false)}>
+                <Link to={item.href} onClick={() => setMenuOpen(false)}>
                   {item.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
-          <a href="/#contact" className="header__cta" onClick={() => setMenuOpen(false)}>
+          <Link to="/#contact" className="header__cta" onClick={() => setMenuOpen(false)}>
             Заказать проект
-          </a>
+          </Link>
         </nav>
 
         <button
