@@ -1,24 +1,22 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import type { GalleryImage, GalleryManifest } from '../types'
+import ImageLightbox from './ImageLightbox'
 import './Gallery.css'
 
 export default function Gallery() {
   const [images, setImages] = useState<GalleryImage[]>([])
-  const [active, setActive] = useState<GalleryImage | null>(null)
+  const [activeIndex, setActiveIndex] = useState<number | null>(null)
+
+  const imageSrcs = useMemo(
+    () => images.map((image) => `/photos/${image.file}`),
+    [images],
+  )
 
   useEffect(() => {
     fetch('/photos/gallery.json')
       .then((res) => (res.ok ? res.json() : { images: [] }))
       .then((data: GalleryManifest) => setImages(data.images ?? []))
       .catch(() => setImages([]))
-  }, [])
-
-  useEffect(() => {
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') setActive(null)
-    }
-    window.addEventListener('keydown', onKeyDown)
-    return () => window.removeEventListener('keydown', onKeyDown)
   }, [])
 
   return (
@@ -35,12 +33,12 @@ export default function Gallery() {
 
         {images.length > 0 ? (
           <div className="gallery__grid">
-            {images.map((image) => (
+            {images.map((image, index) => (
               <button
                 key={image.file}
                 type="button"
                 className="gallery__item"
-                onClick={() => setActive(image)}
+                onClick={() => setActiveIndex(index)}
               >
                 <img src={`/photos/${image.file}`} alt={image.title} loading="lazy" />
                 <span className="gallery__overlay">
@@ -68,16 +66,15 @@ export default function Gallery() {
         )}
       </div>
 
-      {active && (
-        <div className="gallery__lightbox" role="dialog" aria-modal="true" onClick={() => setActive(null)}>
-          <div className="gallery__lightbox-content" onClick={(e) => e.stopPropagation()}>
-            <button type="button" className="gallery__close" aria-label="Закрыть" onClick={() => setActive(null)}>
-              ×
-            </button>
-            <img src={`/photos/${active.file}`} alt={active.title} />
-            <p>{active.title}</p>
-          </div>
-        </div>
+      {activeIndex !== null && images[activeIndex] && (
+        <ImageLightbox
+          images={imageSrcs}
+          index={activeIndex}
+          alt={images[activeIndex].title}
+          caption={images[activeIndex].title}
+          onClose={() => setActiveIndex(null)}
+          onIndexChange={setActiveIndex}
+        />
       )}
     </section>
   )

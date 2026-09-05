@@ -6,6 +6,7 @@ import type { ProductPageConfig } from '../data/productPage'
 import type { ProductColorId } from '../data/productColors'
 import { getProductColorLabel } from '../data/productColors'
 import { calculateProductPrice, formatPrice } from '../utils/productPrice'
+import ImageLightbox from './ImageLightbox'
 import './ProductOrderPage.css'
 
 interface OrderLine {
@@ -35,6 +36,11 @@ function createLine(config: ProductPageConfig): OrderLine {
   }
 }
 
+interface LightboxState {
+  images: string[]
+  index: number
+}
+
 interface ProductOrderPageProps {
   config: ProductPageConfig
 }
@@ -44,7 +50,12 @@ export default function ProductOrderPage({ config }: ProductOrderPageProps) {
   const [lines, setLines] = useState<OrderLine[]>(() => [createLine(config)])
   const [orderOpen, setOrderOpen] = useState(false)
   const [copied, setCopied] = useState(false)
-  const [activeImage, setActiveImage] = useState<string | null>(null)
+  const [lightbox, setLightbox] = useState<LightboxState | null>(null)
+
+  const overviewImageSrcs = useMemo(
+    () => config.overviewImages.map((image) => image.src),
+    [config.overviewImages],
+  )
 
   const galleryColor = useMemo(
     () => config.colors.find((color) => color.id === galleryColorId) ?? config.colors[1],
@@ -99,7 +110,6 @@ export default function ProductOrderPage({ config }: ProductOrderPageProps) {
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
         setOrderOpen(false)
-        setActiveImage(null)
       }
     }
     window.addEventListener('keydown', onKeyDown)
@@ -144,12 +154,12 @@ export default function ProductOrderPage({ config }: ProductOrderPageProps) {
 
           <section className="windowsill-overview" aria-label="Общие фото изделия">
             <div className="windowsill-overview__row">
-              {config.overviewImages.map((image) => (
+              {config.overviewImages.map((image, index) => (
                 <figure key={image.src} className="windowsill-overview__item">
                   <button
                     type="button"
                     className="windowsill-overview__button"
-                    onClick={() => setActiveImage(image.src)}
+                    onClick={() => setLightbox({ images: overviewImageSrcs, index })}
                   >
                     <img src={image.src} alt={image.alt} loading="lazy" />
                   </button>
@@ -189,12 +199,12 @@ export default function ProductOrderPage({ config }: ProductOrderPageProps) {
             </div>
 
             <div className="windowsill-gallery">
-              {galleryColor.images.map((image) => (
+              {galleryColor.images.map((image, index) => (
                 <button
                   key={image}
                   type="button"
                   className="windowsill-gallery__item"
-                  onClick={() => setActiveImage(image)}
+                  onClick={() => setLightbox({ images: galleryColor.images, index })}
                 >
                   <img
                     src={image}
@@ -306,25 +316,14 @@ export default function ProductOrderPage({ config }: ProductOrderPageProps) {
       </main>
       <Footer />
 
-      {activeImage && (
-        <div
-          className="windowsill-lightbox"
-          role="dialog"
-          aria-modal="true"
-          onClick={() => setActiveImage(null)}
-        >
-          <div className="windowsill-lightbox__content" onClick={(event) => event.stopPropagation()}>
-            <button
-              type="button"
-              className="windowsill-lightbox__close"
-              aria-label="Закрыть"
-              onClick={() => setActiveImage(null)}
-            >
-              ×
-            </button>
-            <img src={activeImage} alt={config.lightboxAlt} />
-          </div>
-        </div>
+      {lightbox && (
+        <ImageLightbox
+          images={lightbox.images}
+          index={lightbox.index}
+          alt={config.lightboxAlt}
+          onClose={() => setLightbox(null)}
+          onIndexChange={(index) => setLightbox((current) => (current ? { ...current, index } : null))}
+        />
       )}
 
       {orderOpen && totalPrice !== null && (

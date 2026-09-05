@@ -1,18 +1,21 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { products } from '../data/products'
+import ImageLightbox from './ImageLightbox'
 import './Products.css'
 
-export default function Products() {
-  const [activeImage, setActiveImage] = useState<{ src: string; title: string } | null>(null)
+interface ProductLightboxState {
+  images: string[]
+  index: number
+  title: string
+}
 
-  useEffect(() => {
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') setActiveImage(null)
-    }
-    window.addEventListener('keydown', onKeyDown)
-    return () => window.removeEventListener('keydown', onKeyDown)
-  }, [])
+export default function Products() {
+  const [lightbox, setLightbox] = useState<ProductLightboxState | null>(null)
+
+  const openLightbox = (images: string[], index: number, title: string) => {
+    setLightbox({ images, index, title })
+  }
 
   return (
     <section id="products" className="section products">
@@ -95,20 +98,18 @@ export default function Products() {
                       <button
                         type="button"
                         className="products__cover"
-                        onClick={() =>
-                          setActiveImage({ src: product.images[0], title: product.title })
-                        }
+                        onClick={() => openLightbox(product.images, 0, product.title)}
                       >
                         <img src={product.images[0]} alt={product.title} loading="lazy" />
                       </button>
                       {product.images.length > 1 && (
                         <div className="products__thumbs">
-                          {product.images.slice(1, 5).map((image) => (
+                          {product.images.slice(1, 5).map((image, index) => (
                             <button
                               key={image}
                               type="button"
                               className="products__thumb"
-                              onClick={() => setActiveImage({ src: image, title: product.title })}
+                              onClick={() => openLightbox(product.images, index + 1, product.title)}
                             >
                               <img src={image} alt="" loading="lazy" />
                             </button>
@@ -149,26 +150,15 @@ export default function Products() {
         </div>
       </div>
 
-      {activeImage && (
-        <div
-          className="products__lightbox"
-          role="dialog"
-          aria-modal="true"
-          onClick={() => setActiveImage(null)}
-        >
-          <div className="products__lightbox-content" onClick={(event) => event.stopPropagation()}>
-            <button
-              type="button"
-              className="products__lightbox-close"
-              aria-label="Закрыть"
-              onClick={() => setActiveImage(null)}
-            >
-              ×
-            </button>
-            <img src={activeImage.src} alt={activeImage.title} />
-            <p>{activeImage.title}</p>
-          </div>
-        </div>
+      {lightbox && (
+        <ImageLightbox
+          images={lightbox.images}
+          index={lightbox.index}
+          alt={lightbox.title}
+          caption={lightbox.title}
+          onClose={() => setLightbox(null)}
+          onIndexChange={(index) => setLightbox((current) => (current ? { ...current, index } : null))}
+        />
       )}
     </section>
   )
