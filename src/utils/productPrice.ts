@@ -23,11 +23,8 @@ export function calculateFauxbeamPrice(
   unpainted: boolean,
   rates: ProductPriceRates,
 ): number {
-  const width = roundUpTo100(widthMm)
-  const length = roundUpTo100(lengthMm)
-  const height = roundUpTo100(heightMm)
   const rate = unpainted ? rates.unpainted : rates.painted
-  const surface = height * length * 2 + width * length
+  const surface = heightMm * lengthMm * 2 + widthMm * lengthMm
   return Math.round((surface * rate) / 1_000_000_000)
 }
 
