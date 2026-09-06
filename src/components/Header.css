@@ -34,23 +34,11 @@
   background: #fff;
 }
 
-.header__logo-text {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.15;
-}
-
 .header__logo-text strong {
   font-family: var(--font-display);
   font-size: 1.25rem;
   font-weight: 600;
-}
-
-.header__logo-text small {
-  font-size: 0.72rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
+  line-height: 1.15;
 }
 
 .header__nav {
