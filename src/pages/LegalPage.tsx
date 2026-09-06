@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
 import Header from '../components/Header'
-import Footer from '../components/Footer'
 import { termsSections, privacySections } from '../data/legal'
 import './LegalPage.css'
 
@@ -31,7 +30,6 @@ function LegalDocument({ title, sections }: LegalPageProps) {
           </div>
         </div>
       </main>
-      <Footer />
     </>
   )
 }

@@ -1,6 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
 import Header from './Header'
-import Footer from './Footer'
 import { AVITO_BRAND_URL } from '../data/company'
 import type { ProductPageConfig } from '../data/productPage'
 import type { ProductColorId } from '../data/productColors'
@@ -366,7 +365,6 @@ export default function ProductOrderPage({ config }: ProductOrderPageProps) {
           </section>
         </div>
       </main>
-      <Footer />
 
       {lightbox && (
         <ImageLightbox

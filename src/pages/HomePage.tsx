@@ -5,7 +5,6 @@ import Products from '../components/Products'
 import Gallery from '../components/Gallery'
 import Delivery from '../components/Delivery'
 import Contact from '../components/Contact'
-import Footer from '../components/Footer'
 
 export default function HomePage() {
   return (
@@ -19,7 +18,6 @@ export default function HomePage() {
         <Delivery />
         <Contact />
       </main>
-      <Footer />
     </>
   )
 }
