@@ -108,6 +108,16 @@ main {
   color: var(--color-text-muted);
 }
 
+.section-lead--fixed-lines {
+  display: flex;
+  flex-direction: column;
+  max-width: none;
+}
+
+.section-lead__line {
+  white-space: nowrap;
+}
+
 @media (max-width: 768px) {
   .section {
     padding: 72px 0;

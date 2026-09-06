@@ -88,7 +88,17 @@ export default function ProductQuotePage({ config }: ProductQuotePageProps) {
         <div className="container">
           <header className="windowsill-page__hero">
             <h1 className="section-title">{config.title}</h1>
-            <p className="section-lead">{config.lead}</p>
+            {Array.isArray(config.lead) ? (
+              <p className="section-lead section-lead--fixed-lines">
+                {config.lead.map((line) => (
+                  <span key={line} className="section-lead__line">
+                    {line}
+                  </span>
+                ))}
+              </p>
+            ) : (
+              <p className="section-lead">{config.lead}</p>
+            )}
           </header>
 
           <section className="windowsill-overview" aria-label={config.showcaseTitle}>
