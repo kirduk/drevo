@@ -1,10 +1,12 @@
 import { useState, type FormEvent } from 'react'
 import { Link } from 'react-router-dom'
 import {
+  AVITO_BRAND_URL,
   COMPANY_ADDRESS,
   COMPANY_PHONE,
   COMPANY_PHONE_DISPLAY,
   COMPANY_WORK_HOURS,
+  OZON_SELLER_URL,
   YANDEX_MAP_URL,
 } from '../data/company'
 import './Contact.css'
@@ -86,6 +88,18 @@ export default function Contact() {
             <li>
               <span>Режим работы</span>
               <strong>{COMPANY_WORK_HOURS}</strong>
+            </li>
+            <li>
+              <span>Авито</span>
+              <a href={AVITO_BRAND_URL} target="_blank" rel="noreferrer">
+                Наш магазин на Авито
+              </a>
+            </li>
+            <li>
+              <span>Ozon</span>
+              <a href={OZON_SELLER_URL} target="_blank" rel="noreferrer">
+                Фабрика «Мировое Древо»
+              </a>
             </li>
           </ul>
         </div>

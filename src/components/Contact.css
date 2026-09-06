@@ -102,22 +102,30 @@
   transform: none;
 }
 
-.contact__checkbox {
+.contact__form label.contact__checkbox {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 10px;
   font-size: 0.82rem;
   font-weight: 500;
   color: var(--color-text-muted);
-  line-height: 1.5;
+  line-height: 1.45;
+  cursor: pointer;
 }
 
-.contact__checkbox input {
+.contact__checkbox input[type='checkbox'] {
   width: 18px;
   height: 18px;
-  margin-top: 2px;
+  min-width: 18px;
+  margin: 0;
+  padding: 0;
   flex-shrink: 0;
   accent-color: var(--color-wood);
+  cursor: pointer;
+}
+
+.contact__checkbox span {
+  flex: 1;
 }
 
 .contact__checkbox a {
