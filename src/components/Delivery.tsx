@@ -1,8 +1,5 @@
-import { YANDEX_MAP_URL } from '../data/company'
+import { YANDEX_MAP_EMBED, YANDEX_MAP_URL } from '../data/company'
 import './Delivery.css'
-
-const YANDEX_MAP_EMBED =
-  'https://yandex.ru/map-widget/v1/?oid=63951310805&ol=biz&z=17&l=map'
 
 const options = [
   {
