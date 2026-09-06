@@ -24,8 +24,8 @@ export default function Hero() {
             <a href="#contact" className="hero__btn hero__btn--primary">
               Получить расчёт
             </a>
-            <a href="#gallery" className="hero__btn hero__btn--ghost">
-              Смотреть работы
+            <a href="#products" className="hero__btn hero__btn--ghost">
+              Смотреть продукцию
             </a>
           </div>
           <dl className="hero__stats">
