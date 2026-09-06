@@ -34,6 +34,13 @@ const countertopPreviewImages = [
   '/sources/countertop/scheme.jpg',
 ]
 
+const stairsPreviewImages = [
+  '/sources/stairs/1.png',
+  '/sources/stairs/2.png',
+  '/sources/stairs/7.jpeg',
+  '/sources/stairs/8.jpeg',
+]
+
 export const products: ProductItem[] = [
   {
     id: 'windowsill',
@@ -71,8 +78,9 @@ export const products: ProductItem[] = [
     id: 'stairs',
     title: 'Лестницы',
     description:
-      'Лестницы на заказ: марши, косоуры, ограждения и отделка из натурального дерева под размеры проёма.',
-    images: [],
+      'Лестницы на заказ: проектирование, 3D-визуализация и изготовление маршей, косоуров и ограждений из натурального дерева.',
+    images: stairsPreviewImages,
+    href: '/products/stairs',
   },
   {
     id: 'steps',
