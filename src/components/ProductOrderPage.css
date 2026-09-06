@@ -16,6 +16,10 @@
   margin-bottom: 24px;
 }
 
+.windowsill-page .windowsill-overview__item figcaption {
+  display: none;
+}
+
 .windowsill-overview__row {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));

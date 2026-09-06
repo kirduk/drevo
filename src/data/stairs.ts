@@ -12,10 +12,10 @@ const showcaseImages = [
 ]
 
 const portfolioImages = [
-  { src: `${base}/7.jpeg`, alt: 'Пример лестницы — работа 1' },
-  { src: `${base}/8.jpeg`, alt: 'Пример лестницы — работа 2' },
-  { src: `${base}/9.jpeg`, alt: 'Пример лестницы — работа 3' },
-  { src: `${base}/10.jpeg`, alt: 'Пример лестницы — работа 4' },
+  { src: `${base}/7.jpeg`, alt: '' },
+  { src: `${base}/8.jpeg`, alt: '' },
+  { src: `${base}/9.jpeg`, alt: '' },
+  { src: `${base}/10.jpeg`, alt: '' },
 ]
 
 export const stairsPageConfig: ProductQuotePageConfig = {
