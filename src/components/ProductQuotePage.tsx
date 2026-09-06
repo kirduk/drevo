@@ -36,7 +36,6 @@ function ImageGrid({
           >
             <img src={image.src} alt={image.alt} loading="lazy" />
           </button>
-          <figcaption>{image.alt}</figcaption>
         </figure>
       ))}
     </div>
