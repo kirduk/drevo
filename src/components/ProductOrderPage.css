@@ -192,6 +192,12 @@
   justify-content: space-between;
   gap: 12px;
   margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+
+.windowsill-lines__head .windowsill-lines__checkbox {
+  margin-left: auto;
+  margin-right: 12px;
 }
 
 .windowsill-lines__head span {
@@ -225,6 +231,24 @@
 
 .windowsill-lines__grid--steps {
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1.2fr;
+}
+
+.windowsill-lines__checkbox {
+  display: flex !important;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  min-height: 46px;
+  font-size: 0.92rem !important;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.windowsill-lines__checkbox input {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  accent-color: var(--color-wood);
 }
 
 .windowsill-lines__title--secondary {

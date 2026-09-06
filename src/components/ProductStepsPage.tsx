@@ -15,6 +15,7 @@ interface StepSetLine {
   treadLength: string
   riserWidth: string
   riserLength: string
+  hasRiser: boolean
 }
 
 interface PlatformLine {
@@ -34,6 +35,7 @@ interface ParsedStepSet {
   treadPrice: number
   riserPrice: number
   price: number
+  hasRiser: boolean
   valid: boolean
 }
 
@@ -65,6 +67,7 @@ function createStepSet(config: ProductStepsPageConfig): StepSetLine {
     treadLength: config.defaultTreadLength,
     riserWidth: config.defaultRiserWidth,
     riserLength: config.defaultRiserLength,
+    hasRiser: true,
   }
 }
 
@@ -104,17 +107,20 @@ export default function ProductStepsPage({ config }: ProductStepsPageProps) {
     const treadLength = Number(line.treadLength) || 0
     const riserWidth = Number(line.riserWidth) || 0
     const riserLength = Number(line.riserLength) || 0
+    const hasRiser = line.hasRiser
     const unpainted = line.colorId === 'unpainted'
     const treadValid = isValidSize(treadWidth, treadLength, config.maxWidth, config.maxLength)
-    const riserValid = isValidSize(riserWidth, riserLength, config.maxWidth, config.maxLength)
+    const riserValid =
+      !hasRiser || isValidSize(riserWidth, riserLength, config.maxWidth, config.maxLength)
     const valid = treadValid && riserValid
 
     const treadPrice = treadValid
       ? calculateProductPrice(treadWidth, treadLength, unpainted, config.treadRates)
       : 0
-    const riserPrice = riserValid
-      ? calculateProductPrice(riserWidth, riserLength, unpainted, config.riserRates)
-      : 0
+    const riserPrice =
+      hasRiser && riserValid
+        ? calculateProductPrice(riserWidth, riserLength, unpainted, config.riserRates)
+        : 0
 
     return {
       line,
@@ -126,6 +132,7 @@ export default function ProductStepsPage({ config }: ProductStepsPageProps) {
       treadPrice,
       riserPrice,
       price: treadPrice + riserPrice,
+      hasRiser,
       valid,
     }
   }
@@ -166,10 +173,12 @@ export default function ProductStepsPage({ config }: ProductStepsPageProps) {
           config.orderHeading,
           '',
           'Ступени с подступёнками:',
-          ...parsedStepSets.map(
-            (item, index) =>
-              `${index + 1}. Цвет: ${item.colorLabel}\n   Ступень: ${item.treadWidth}×${item.treadLength} мм — ${formatPrice(item.treadPrice)}\n   Подступёнок: ${item.riserWidth}×${item.riserLength} мм — ${formatPrice(item.riserPrice)}\n   Итого: ${formatPrice(item.price)}`,
-          ),
+          ...parsedStepSets.map((item, index) => {
+            const riserLine = item.hasRiser
+              ? `\n   Подступёнок: ${item.riserWidth}×${item.riserLength} мм — ${formatPrice(item.riserPrice)}`
+              : '\n   Без подступёнка'
+            return `${index + 1}. Цвет: ${item.colorLabel}\n   Ступень: ${item.treadWidth}×${item.treadLength} мм — ${formatPrice(item.treadPrice)}${riserLine}\n   Итого: ${formatPrice(item.price)}`
+          }),
           ...(parsedPlatforms.length > 0
             ? [
                 '',
@@ -324,9 +333,17 @@ export default function ProductStepsPage({ config }: ProductStepsPageProps) {
               {parsedStepSets.map((item, index) => (
                 <div key={item.line.id} className="windowsill-lines__row">
                   <div className="windowsill-lines__head">
-                    <span>
-                      Ступень с подступёнком {index + 1}
-                    </span>
+                    <span>Ступень {index + 1}{item.hasRiser ? ' с подступёнком' : ''}</span>
+                    <label className="windowsill-lines__checkbox">
+                      <input
+                        type="checkbox"
+                        checked={item.line.hasRiser}
+                        onChange={(event) =>
+                          updateStepSet(item.line.id, { hasRiser: event.target.checked })
+                        }
+                      />
+                      С подступёнком
+                    </label>
                     {stepSets.length > 1 && (
                       <button
                         type="button"
@@ -387,6 +404,7 @@ export default function ProductStepsPage({ config }: ProductStepsPageProps) {
                         min={1}
                         max={config.maxWidth}
                         value={item.line.riserWidth}
+                        disabled={!item.line.hasRiser}
                         onChange={(event) =>
                           updateStepSet(item.line.id, { riserWidth: event.target.value })
                         }
@@ -399,6 +417,7 @@ export default function ProductStepsPage({ config }: ProductStepsPageProps) {
                         min={1}
                         max={config.maxLength}
                         value={item.line.riserLength}
+                        disabled={!item.line.hasRiser}
                         onChange={(event) =>
                           updateStepSet(item.line.id, { riserLength: event.target.value })
                         }
@@ -410,8 +429,9 @@ export default function ProductStepsPage({ config }: ProductStepsPageProps) {
                         <div className="windowsill-lines__price-breakdown">
                           <strong>{formatPrice(item.price)}</strong>
                           <small>
-                            ступень {formatPrice(item.treadPrice)} + подступёнок{' '}
-                            {formatPrice(item.riserPrice)}
+                            {item.hasRiser
+                              ? `ступень ${formatPrice(item.treadPrice)} + подступёнок ${formatPrice(item.riserPrice)}`
+                              : `только ступень ${formatPrice(item.treadPrice)}`}
                           </small>
                         </div>
                       ) : (
