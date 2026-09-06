@@ -1,6 +1,6 @@
 .header {
   position: fixed;
-  inset: 0 0 auto;
+  inset: var(--dev-banner-height) 0 auto;
   z-index: 100;
   height: var(--header-height);
   transition: background 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease;
@@ -142,7 +142,7 @@
 
   .header__nav {
     position: fixed;
-    inset: var(--header-height) 0 0;
+    inset: var(--layout-top-offset) 0 0;
     flex-direction: column;
     justify-content: flex-start;
     gap: 32px;

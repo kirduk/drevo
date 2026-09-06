@@ -7,6 +7,7 @@ import CountertopPage from './pages/CountertopPage'
 import FauxbeamPage from './pages/FauxbeamPage'
 import { PrivacyPage, TermsPage } from './pages/LegalPage'
 import ValidatePage from './pages/ValidatePage'
+import DevBanner from './components/DevBanner'
 
 function ScrollToTop() {
   const { pathname, hash } = useLocation()
@@ -38,6 +39,7 @@ function ScrollToTop() {
 export default function App() {
   return (
     <>
+      <DevBanner />
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<HomePage />} />

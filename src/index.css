@@ -18,6 +18,8 @@
   --radius-sm: 10px;
   --container: 1180px;
   --header-height: 76px;
+  --dev-banner-height: 40px;
+  --layout-top-offset: calc(var(--dev-banner-height) + var(--header-height));
 }
 
 *,
@@ -68,7 +70,7 @@ main {
 
 .section {
   padding: 96px 0;
-  scroll-margin-top: calc(var(--header-height) + 16px);
+  scroll-margin-top: calc(var(--layout-top-offset) + 16px);
 }
 
 .section-label {
