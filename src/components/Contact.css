@@ -96,6 +96,41 @@
   color: var(--color-text-muted);
 }
 
+.contact__form button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.contact__checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+
+.contact__checkbox input {
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  flex-shrink: 0;
+  accent-color: var(--color-wood);
+}
+
+.contact__checkbox a {
+  color: var(--color-wood);
+  font-weight: 600;
+}
+
+.contact__error {
+  margin: 0;
+  font-size: 0.82rem;
+  color: #a33;
+}
+
 .contact__success {
   padding: 24px 8px;
   text-align: center;

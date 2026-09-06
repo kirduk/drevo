@@ -5,6 +5,7 @@ import WindowsillPage from './pages/WindowsillPage'
 import SlopePage from './pages/SlopePage'
 import CountertopPage from './pages/CountertopPage'
 import FauxbeamPage from './pages/FauxbeamPage'
+import { PrivacyPage, TermsPage } from './pages/LegalPage'
 import ValidatePage from './pages/ValidatePage'
 
 function ScrollToTop() {
@@ -44,6 +45,8 @@ export default function App() {
         <Route path="/products/slope" element={<SlopePage />} />
         <Route path="/products/countertop" element={<CountertopPage />} />
         <Route path="/products/fauxbeam" element={<FauxbeamPage />} />
+        <Route path="/legal/terms" element={<TermsPage />} />
+        <Route path="/legal/privacy" element={<PrivacyPage />} />
         <Route path="/validate" element={<ValidatePage />} />
       </Routes>
     </>

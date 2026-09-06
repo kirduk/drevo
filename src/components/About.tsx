@@ -24,7 +24,6 @@ export default function About() {
     <section id="about" className="section about">
       <div className="container about__grid">
         <div className="about__intro">
-          <p className="section-label">О фабрике</p>
           <h2 className="section-title">Создаём мебель с характером и точностью</h2>
           <p className="section-lead">
             Мы объединяем ремесленный подход и современные технологии, чтобы каждый проект

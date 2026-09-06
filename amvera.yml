@@ -16,3 +16,4 @@ run:
 
 env:
   NPM_CONFIG_PRODUCTION: "false"
+  # VK_ACCESS_TOKEN и VK_PEER_ID (два id через запятую) — задайте в панели Amvera
