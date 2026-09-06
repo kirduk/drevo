@@ -1,7 +1,8 @@
 import './Delivery.css'
 
 const YANDEX_MAP_URL = 'https://yandex.ru/maps/org/mirovoye_drevo/63951310805/'
-const YANDEX_MAP_EMBED = 'https://yandex.ru/map-widget/v1/?oid=63951310805&z=16&l=map'
+const YANDEX_MAP_EMBED =
+  'https://yandex.ru/map-widget/v1/?oid=63951310805&ol=biz&z=17&l=map'
 
 const options = [
   {
