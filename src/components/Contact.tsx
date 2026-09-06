@@ -9,6 +9,7 @@ import {
   OZON_SELLER_URL,
   YANDEX_MAP_URL,
 } from '../data/company'
+import { AvitoIcon, OzonIcon } from './MarketplaceIcons'
 import './Contact.css'
 
 export default function Contact() {
@@ -91,14 +92,16 @@ export default function Contact() {
             </li>
             <li>
               <span>Авито</span>
-              <a href={AVITO_BRAND_URL} target="_blank" rel="noreferrer">
+              <a className="contact__market-link" href={AVITO_BRAND_URL} target="_blank" rel="noreferrer">
+                <AvitoIcon className="contact__market-icon" />
                 Наш магазин на Авито
               </a>
             </li>
             <li>
               <span>Ozon</span>
-              <a href={OZON_SELLER_URL} target="_blank" rel="noreferrer">
-                Фабрика «Мировое Древо»
+              <a className="contact__market-link" href={OZON_SELLER_URL} target="_blank" rel="noreferrer">
+                <OzonIcon className="contact__market-icon" />
+                Наш магазин на Ozon
               </a>
             </li>
           </ul>

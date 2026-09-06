@@ -39,6 +39,20 @@
   color: var(--color-wood);
 }
 
+.contact__market-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.05rem;
+}
+
+.contact__market-icon {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  border-radius: 6px;
+}
+
 .contact__form {
   display: grid;
   gap: 18px;
