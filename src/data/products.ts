@@ -41,6 +41,13 @@ const stairsPreviewImages = [
   '/sources/stairs/8.jpeg',
 ]
 
+const stepsPreviewImages = [
+  '/sources/steps/1.jpg',
+  '/sources/steps/2.jpg',
+  '/sources/steps/all_colours.png',
+  '/sources/steps/scheme.png',
+]
+
 export const products: ProductItem[] = [
   {
     id: 'windowsill',
@@ -86,7 +93,8 @@ export const products: ProductItem[] = [
     id: 'steps',
     title: 'Ступени для лестниц',
     description:
-      'Отдельные ступени и комплекты для лестничных маршей — износостойкая отделка и точная фрезеровка.',
-    images: [],
+      'Ступени и подступенки из массива дуба и дубовой палубы для бетонных лестниц — точная подгонка под ваш марш.',
+    images: stepsPreviewImages,
+    href: '/products/steps',
   },
 ]
