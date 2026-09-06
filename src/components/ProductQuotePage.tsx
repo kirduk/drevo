@@ -119,7 +119,7 @@ export default function ProductQuotePage({ config }: ProductQuotePageProps) {
           </section>
 
           <section className="windowsill-section windowsill-section--accent">
-            <h2 className="windowsill-section__title">Стоимость</h2>
+            <h2 className="windowsill-section__title">{config.priceTitle}</h2>
             <p className="windowsill-section__lead">{config.priceText}</p>
           </section>
 

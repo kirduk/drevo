@@ -8,6 +8,7 @@ export interface ProductQuotePageConfig {
   portfolioTitle: string
   portfolioImages: ProductOverviewImage[]
   description: string
+  priceTitle: string
   priceText: string
   orderHeading: string
   orderMessage: string
