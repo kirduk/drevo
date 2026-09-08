@@ -10,6 +10,7 @@ import StepsPage from './pages/StepsPage'
 import { PrivacyPage, TermsPage } from './pages/LegalPage'
 import ValidatePage from './pages/ValidatePage'
 import DevBanner from './components/DevBanner'
+import Seo from './components/Seo'
 
 function ScrollToTop() {
   const { pathname, hash } = useLocation()
@@ -42,6 +43,7 @@ export default function App() {
   return (
     <>
       <DevBanner />
+      <Seo />
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<HomePage />} />

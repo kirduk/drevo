@@ -16,4 +16,5 @@ run:
 
 env:
   NPM_CONFIG_PRODUCTION: "false"
+  # SITE_URL — канонический адрес сайта, например https://example.ru (для sitemap и SEO)
   # VK_ACCESS_TOKEN и VK_PEER_ID (два id через запятую) — задайте в панели Amvera

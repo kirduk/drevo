@@ -7,6 +7,26 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const app = express()
 const port = Number(process.env.PORT || 8080)
 
+const SITEMAP_PATHS = [
+  '/',
+  '/products/windowsill',
+  '/products/slope',
+  '/products/countertop',
+  '/products/fauxbeam',
+  '/products/stairs',
+  '/products/steps',
+]
+
+function getSiteUrl(req) {
+  if (process.env.SITE_URL) {
+    return process.env.SITE_URL.replace(/\/$/, '')
+  }
+
+  const host = req.get('x-forwarded-host') || req.get('host')
+  const protocol = req.get('x-forwarded-proto') || req.protocol
+  return `${protocol}://${host}`
+}
+
 app.use(express.json({ limit: '16kb' }))
 
 app.post('/api/contact', async (req, res) => {
@@ -46,6 +66,35 @@ app.post('/api/contact', async (req, res) => {
       error: 'Не удалось отправить заявку. Попробуйте позже или свяжитесь с нами по телефону.',
     })
   }
+})
+
+app.get('/robots.txt', (req, res) => {
+  const siteUrl = getSiteUrl(req)
+  res.type('text/plain').send(`User-agent: *
+Allow: /
+Disallow: /validate
+
+Sitemap: ${siteUrl}/sitemap.xml
+`)
+})
+
+app.get('/sitemap.xml', (req, res) => {
+  const siteUrl = getSiteUrl(req)
+  const lastmod = new Date().toISOString().slice(0, 10)
+  const urls = SITEMAP_PATHS.map(
+    (pathname) => `  <url>
+    <loc>${siteUrl}${pathname === '/' ? '/' : pathname}</loc>
+    <lastmod>${lastmod}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>${pathname === '/' ? '1.0' : '0.8'}</priority>
+  </url>`,
+  ).join('\n')
+
+  res.type('application/xml').send(`<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${urls}
+</urlset>
+`)
 })
 
 app.use(express.static(path.join(__dirname, 'dist')))
