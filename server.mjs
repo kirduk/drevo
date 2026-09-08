@@ -17,13 +17,20 @@ const SITEMAP_PATHS = [
   '/products/steps',
 ]
 
+function normalizeSiteUrl(url) {
+  const trimmed = String(url).trim().replace(/\/$/, '')
+  if (!trimmed) return trimmed
+  if (/^https?:\/\//i.test(trimmed)) return trimmed
+  return `https://${trimmed}`
+}
+
 function getSiteUrl(req) {
   if (process.env.SITE_URL) {
-    return process.env.SITE_URL.replace(/\/$/, '')
+    return normalizeSiteUrl(process.env.SITE_URL)
   }
 
   const host = req.get('x-forwarded-host') || req.get('host')
-  const protocol = req.get('x-forwarded-proto') || req.protocol
+  const protocol = req.get('x-forwarded-proto') || 'https'
   return `${protocol}://${host}`
 }
 

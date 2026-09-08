@@ -19,9 +19,16 @@ const DEFAULT_KEYWORDS =
 
 const LOGO_PATH = '/sources/logo/logo_cut_1.jfif'
 
+function normalizeSiteUrl(url: string): string {
+  const trimmed = url.trim().replace(/\/$/, '')
+  if (!trimmed) return trimmed
+  if (/^https?:\/\//i.test(trimmed)) return trimmed
+  return `https://${trimmed}`
+}
+
 export function getSiteOrigin(): string {
-  const configured = import.meta.env.VITE_SITE_URL?.replace(/\/$/, '')
-  if (configured) return configured
+  const configured = import.meta.env.VITE_SITE_URL
+  if (configured) return normalizeSiteUrl(configured)
   if (typeof window !== 'undefined') return window.location.origin
   return ''
 }
