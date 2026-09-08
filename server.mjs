@@ -17,8 +17,8 @@ const SITEMAP_PATHS = [
   '/products/steps',
 ]
 
-function normalizeSiteUrl(url) {
-  const trimmed = String(url).trim().replace(/\/$/, '')
+function normalizeSiteUrl(value) {
+  const trimmed = String(value).trim().replace(/\/$/, '')
   if (!trimmed) return trimmed
   if (/^https?:\/\//i.test(trimmed)) return trimmed
   return `https://${trimmed}`
@@ -30,7 +30,7 @@ function getSiteUrl(req) {
   }
 
   const host = req.get('x-forwarded-host') || req.get('host')
-  const protocol = req.get('x-forwarded-proto') || 'https'
+  const protocol = req.get('x-forwarded-proto') || req.protocol || 'https'
   return `${protocol}://${host}`
 }
 
