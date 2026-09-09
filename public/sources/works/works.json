@@ -1,0 +1,37 @@
+[
+  {
+    "id": "1",
+    "image": "/sources/works/1.jpg",
+    "description": "Подоконники, готовые к отправке"
+  },
+  {
+    "id": "2",
+    "image": "/sources/works/2.jpg",
+    "description": "Установленные откосы на окно"
+  },
+  {
+    "id": "3",
+    "image": "/sources/works/3.jpg",
+    "description": "Лестница на бетонном основании"
+  },
+  {
+    "id": "4",
+    "image": "/sources/works/4.jpg",
+    "description": "Лестница на бетонном основании"
+  },
+  {
+    "id": "5",
+    "image": "/sources/works/5.jpg",
+    "description": "Лестница на бетонном основании"
+  },
+  {
+    "id": "6",
+    "image": "/sources/works/6.jpg",
+    "description": "Лестница на бетонном основании"
+  },
+  {
+    "id": "7",
+    "image": "/sources/works/7.jpg",
+    "description": "Лестница на бетонном основании"
+  }
+]

@@ -7,6 +7,7 @@ const LOGO_SRC = '/sources/logo/logo_cut_1.jfif'
 const navItems = [
   { href: '/#about', label: 'О фабрике' },
   { href: '/#products', label: 'Продукция' },
+  { href: '/#works', label: 'Наши работы' },
   { href: '/#delivery', label: 'Доставка' },
   { href: '/#contact', label: 'Контакты' },
 ]
