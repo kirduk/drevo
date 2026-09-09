@@ -12,3 +12,5 @@ export const YANDEX_MAP_LAT = 59.9038
 export const YANDEX_MAP_ZOOM = 17
 export const YANDEX_MAP_EMBED = `https://yandex.ru/map-widget/v1/?ll=${YANDEX_MAP_LON}%2C${YANDEX_MAP_LAT}&z=${YANDEX_MAP_ZOOM}&pt=${YANDEX_MAP_LON}%2C${YANDEX_MAP_LAT}&l=map`
 export const SITE_NAME = 'Мировое Древо'
+export const COMPANY_FOUNDED_YEAR = 2016
+export const COMPANY_CITY = 'Санкт-Петербург'

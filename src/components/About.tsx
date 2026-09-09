@@ -1,4 +1,5 @@
 import './About.css'
+import { COMPANY_CITY, COMPANY_FOUNDED_YEAR } from '../data/company'
 
 const features = [
   {
@@ -26,8 +27,9 @@ export default function About() {
         <div className="about__intro">
           <h2 className="section-title">Создаём мебель с характером и точностью</h2>
           <p className="section-lead">
-            Мы объединяем ремесленный подход и современные технологии, чтобы каждый проект
-            был функциональным, долговечным и эстетичным — от загородного дома до городской квартиры.
+            С {COMPANY_FOUNDED_YEAR} года работаем в {COMPANY_CITY}, объединяя ремесленный подход
+            и современные технологии — чтобы каждый проект был функциональным, долговечным
+            и эстетичным.
           </p>
         </div>
 

@@ -1,5 +1,6 @@
 import {
   COMPANY_ADDRESS,
+  COMPANY_FOUNDED_YEAR,
   COMPANY_PHONE,
   COMPANY_WORK_HOURS,
   SITE_NAME,
@@ -53,6 +54,7 @@ function createLocalBusinessJsonLd() {
       'Производство изделий из массива дуба и шпона в Санкт-Петербурге: подоконники, откосы, столешницы, лестницы, ступени и фальш-балки.',
     url: getSiteOrigin() || undefined,
     telephone: COMPANY_PHONE,
+    foundingDate: String(COMPANY_FOUNDED_YEAR),
     image: getAbsoluteAssetUrl(LOGO_PATH),
     address: {
       '@type': 'PostalAddress',

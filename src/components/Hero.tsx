@@ -1,3 +1,4 @@
+import { COMPANY_CITY, COMPANY_FOUNDED_YEAR } from '../data/company'
 import './Hero.css'
 
 export default function Hero() {
@@ -11,7 +12,9 @@ export default function Hero() {
 
       <div className="container hero__inner">
         <div className="hero__content">
-          <p className="hero__eyebrow">С 1998 года · Санкт-Петербург</p>
+          <p className="hero__eyebrow">
+            С {COMPANY_FOUNDED_YEAR} года · {COMPANY_CITY}
+          </p>
           <h1 className="hero__title">
             Мебель, которая<br />
             <em>живёт вместе с домом</em>
@@ -28,20 +31,6 @@ export default function Hero() {
               Смотреть продукцию
             </a>
           </div>
-          <dl className="hero__stats">
-            <div>
-              <dt>27+</dt>
-              <dd>лет опыта</dd>
-            </div>
-            <div>
-              <dt>4 800+</dt>
-              <dd>реализованных проектов</dd>
-            </div>
-            <div>
-              <dt>12</dt>
-              <dd>лет гарантии на фасады</dd>
-            </div>
-          </dl>
         </div>
 
         <div className="hero__visual">
