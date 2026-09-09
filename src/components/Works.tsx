@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import ImageLightbox from './ImageLightbox'
 import './Works.css'
 
 interface WorkItem {
@@ -11,6 +12,7 @@ export default function Works() {
   const [items, setItems] = useState<WorkItem[]>([])
   const [canScrollLeft, setCanScrollLeft] = useState(false)
   const [canScrollRight, setCanScrollRight] = useState(false)
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null)
   const trackRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -80,11 +82,16 @@ export default function Works() {
             className="works__track"
             onScroll={updateScrollState}
           >
-            {items.map((item) => (
+            {items.map((item, index) => (
               <article key={item.id} className="works__card">
-                <div className="works__media">
+                <button
+                  type="button"
+                  className="works__media"
+                  onClick={() => setLightboxIndex(index)}
+                  aria-label={`Открыть фото: ${item.description || 'Наша работа'}`}
+                >
                   <img src={item.image} alt={item.description || 'Наша работа'} loading="lazy" />
-                </div>
+                </button>
                 {item.description && <p className="works__caption">{item.description}</p>}
               </article>
             ))}
@@ -101,6 +108,17 @@ export default function Works() {
           </button>
         </div>
       </div>
+
+      {lightboxIndex !== null && (
+        <ImageLightbox
+          images={items.map((item) => item.image)}
+          index={lightboxIndex}
+          alt={items[lightboxIndex]?.description || 'Наша работа'}
+          caption={items[lightboxIndex]?.description}
+          onClose={() => setLightboxIndex(null)}
+          onIndexChange={setLightboxIndex}
+        />
+      )}
     </section>
   )
 }
