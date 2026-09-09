@@ -21,7 +21,7 @@ export default function Hero() {
           </h1>
           <p className="hero__text">
             «Мировое Древо» — Фабрика полного цикла. Проектируем, изготавливаем
-            и устанавливаем кухни, шкафы и корпусную мебель из натуральных материалов.
+            и устанавливаем лестницы, шкафы и корпусную мебель из натуральных материалов.
           </p>
           <div className="hero__actions">
             <a href="#contact" className="hero__btn hero__btn--primary">
