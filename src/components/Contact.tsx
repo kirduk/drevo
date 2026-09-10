@@ -91,14 +91,12 @@ export default function Contact() {
               <strong>{COMPANY_WORK_HOURS}</strong>
             </li>
             <li>
-              <span>Авито</span>
               <a className="contact__market-link" href={AVITO_BRAND_URL} target="_blank" rel="noreferrer">
                 <AvitoIcon className="contact__market-icon" />
                 Наш магазин на Авито
               </a>
             </li>
             <li>
-              <span>Ozon</span>
               <a className="contact__market-link" href={OZON_SELLER_URL} target="_blank" rel="noreferrer">
                 <OzonIcon className="contact__market-icon" />
                 Наш магазин на Ozon
