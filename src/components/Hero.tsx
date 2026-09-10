@@ -46,10 +46,10 @@ export default function Hero() {
               <strong>Лестница дубовая</strong>
               <span>Лестница на бетонном основании - массив дуба</span>
             </div>
-          </div>
-          <div className="hero__card hero__card--accent">
-            <span className="hero__badge">Под ключ</span>
-            <p>Замер, 3D-проект, производство и монтаж — в одной команде</p>
+            <div className="hero__card hero__card--accent">
+              <span className="hero__badge">Под ключ</span>
+              <p>Замер, 3D-проект, производство и монтаж — в одной команде</p>
+            </div>
           </div>
         </div>
       </div>
