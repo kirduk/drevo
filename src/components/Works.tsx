@@ -60,10 +60,13 @@ export default function Works() {
       <div className="container">
         <div className="works__head">
           <h2 className="section-title">Наши работы</h2>
-          <p className="section-lead">
-            Примеры изделий, которые мы уже изготовили и установили.
-            <br />
-            От подоконников и откосов до лестниц и других деревянных конструкций.
+          <p className="section-lead section-lead--fixed-lines">
+            <span className="section-lead__line">
+              Примеры изделий, которые мы уже изготовили и установили.
+            </span>
+            <span className="section-lead__line">
+              От подоконников и откосов до лестниц и других деревянных конструкций.
+            </span>
           </p>
         </div>
 

@@ -5,8 +5,14 @@
 }
 
 .works__head {
-  max-width: 720px;
+  max-width: none;
   margin-bottom: 40px;
+}
+
+@media (max-width: 960px) {
+  .works__head .section-lead__line {
+    white-space: normal;
+  }
 }
 
 .works__carousel {
