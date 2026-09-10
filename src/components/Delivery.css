@@ -5,8 +5,14 @@
 }
 
 .delivery__head {
-  max-width: 720px;
+  max-width: none;
   margin-bottom: 40px;
+}
+
+@media (max-width: 960px) {
+  .delivery__head .section-lead__line {
+    white-space: normal;
+  }
 }
 
 .delivery__grid {

@@ -173,7 +173,7 @@
 .hero__card--accent {
   position: absolute;
   right: -12px;
-  bottom: 36px;
+  bottom: 112px;
   max-width: 280px;
   padding: 22px 24px;
   border: 1px solid rgba(255, 255, 255, 0.65);
@@ -215,6 +215,8 @@
 @media (max-width: 560px) {
   .hero__card--accent {
     position: static;
+    right: auto;
+    bottom: auto;
     max-width: none;
     margin-top: 16px;
   }

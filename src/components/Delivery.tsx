@@ -45,9 +45,11 @@ export default function Delivery() {
       <div className="container">
         <div className="delivery__head">
           <h2 className="section-title">Доставка и самовывоз</h2>
-          <p className="section-lead">
-            Выберите удобный способ получения заказа — заберите с производства, доставим по
-            Санкт-Петербургу или отправим в ваш город.
+          <p className="section-lead section-lead--fixed-lines">
+            <span className="section-lead__line">
+              Выберите удобный способ получения заказа — заберите с производства, доставим по
+              Санкт-Петербургу или отправим в ваш город.
+            </span>
           </p>
         </div>
 
