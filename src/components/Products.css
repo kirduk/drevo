@@ -5,8 +5,14 @@
 }
 
 .products__head {
-  max-width: 720px;
+  max-width: none;
   margin-bottom: 48px;
+}
+
+@media (max-width: 960px) {
+  .products__head .section-lead__line {
+    white-space: normal;
+  }
 }
 
 .products__grid {
