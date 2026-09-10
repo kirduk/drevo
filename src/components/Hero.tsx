@@ -35,10 +35,16 @@ export default function Hero() {
 
         <div className="hero__visual">
           <div className="hero__card hero__card--main">
-            <div className="hero__card-image" />
+            <div className="hero__card-image">
+              <img
+                src="/sources/hero.jpg"
+                alt="Лестница дубовая на бетонном основании"
+                loading="eager"
+              />
+            </div>
             <div className="hero__card-caption">
-              <strong>Кухня «Борneo»</strong>
-              <span>Массив дуба · матовая эмаль</span>
+              <strong>Лестница дубовая</strong>
+              <span>Лестница на бетонном основании - массив дуба</span>
             </div>
           </div>
           <div className="hero__card hero__card--accent">
