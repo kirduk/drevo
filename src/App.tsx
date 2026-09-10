@@ -16,24 +16,35 @@ function ScrollToTop() {
   const { pathname, hash } = useLocation()
 
   useEffect(() => {
-    if (hash) {
-      const id = hash.slice(1)
-      const scrollToSection = () => {
-        const element = document.getElementById(id)
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' })
-          return true
-        }
-        return false
-      }
-
-      if (!scrollToSection()) {
-        window.setTimeout(scrollToSection, 0)
-      }
+    if (!hash) {
+      window.scrollTo(0, 0)
       return
     }
 
-    window.scrollTo(0, 0)
+    const id = hash.slice(1)
+    let cancelled = false
+    let attempts = 0
+
+    const scrollToSection = () => {
+      if (cancelled) return
+
+      const element = document.getElementById(id)
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' })
+        return
+      }
+
+      attempts += 1
+      if (attempts < 40) {
+        window.setTimeout(scrollToSection, 50)
+      }
+    }
+
+    scrollToSection()
+
+    return () => {
+      cancelled = true
+    }
   }, [pathname, hash])
 
   return null

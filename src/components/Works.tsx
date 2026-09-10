@@ -51,10 +51,6 @@ export default function Works() {
     })
   }
 
-  if (items.length === 0) {
-    return null
-  }
-
   return (
     <section id="works" className="section works">
       <div className="container">
@@ -70,6 +66,7 @@ export default function Works() {
           </p>
         </div>
 
+        {items.length > 0 && (
         <div className="works__carousel">
           <button
             type="button"
@@ -111,9 +108,10 @@ export default function Works() {
             ›
           </button>
         </div>
+        )}
       </div>
 
-      {lightboxIndex !== null && (
+      {lightboxIndex !== null && items.length > 0 && (
         <ImageLightbox
           images={items.map((item) => item.image)}
           index={lightboxIndex}

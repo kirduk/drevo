@@ -277,6 +277,11 @@
   color: var(--color-text-muted);
 }
 
+.windowsill-lines__price-breakdown small.windowsill-lines__price-detail--stacked {
+  display: grid;
+  gap: 2px;
+}
+
 
 .windowsill-lines__grid label {
   display: grid;

@@ -428,10 +428,15 @@ export default function ProductStepsPage({ config }: ProductStepsPageProps) {
                       {item.valid ? (
                         <div className="windowsill-lines__price-breakdown">
                           <strong>{formatPrice(item.price)}</strong>
-                          <small>
-                            {item.hasRiser
-                              ? `ступень ${formatPrice(item.treadPrice)} + подступёнок ${formatPrice(item.riserPrice)}`
-                              : `только ступень ${formatPrice(item.treadPrice)}`}
+                          <small className={item.hasRiser ? 'windowsill-lines__price-detail--stacked' : undefined}>
+                            {item.hasRiser ? (
+                              <>
+                                <span>ступень {formatPrice(item.treadPrice)}</span>
+                                <span>Подступёнок {formatPrice(item.riserPrice)}</span>
+                              </>
+                            ) : (
+                              `только ступень ${formatPrice(item.treadPrice)}`
+                            )}
                           </small>
                         </div>
                       ) : (
